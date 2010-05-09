@@ -1,9 +1,13 @@
 package Rust;
 use Moose ();
+use Test::More;
 use Moose::Exporter;
 
 Moose::Exporter->setup_import_methods(
-    # with_meta => [],
+    as_is => [qw(
+                    ok is isnt like unlike is_deeply cmp_ok skip pass fail
+                    done_testing can_ok isa_ok new_ok diag note
+               )],
     also      => 'Moose',
    );
 
@@ -16,10 +20,15 @@ sub init_meta {
         );
 }
 
+
 1;
 
 __END__
 
+                    is isnt like unlike is_deeply cmp_ok skip todo
+                    todo_skip pass fail eq_array eq_hash eq_set $TODO
+                    plan done_testing can_ok isa_ok new_ok diag note
+                    explain subtest BAIL_OUT
 
 package MyApp::Meta::Class;
 use Moose;

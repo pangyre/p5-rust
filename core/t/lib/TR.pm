@@ -1,15 +1,19 @@
 package TR; # TestRust
 use Rust;
 with qw( Rust::Role::MechCat );
-use Test::More;
+# use Test::More;
+
+has "an_okay_attribute" =>
+    is => "rw",
+    isa => "Str",
+    ;
 
 sub catalyst_app { "" }
 
 sub oh_noes : Test(1) {
     my $self = shift;
-    ok(1, "Ok here");
-    return "...";
-
+    $self->an_okay_attribute("OH HAI");
+    ok($self->an_okay_attribute, "Ok here");
 }
 
 1;
