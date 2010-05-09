@@ -4,7 +4,6 @@ use namespace::autoclean;
 use Carp qw( confess );
 use Path::Class ();
 use User::pwent ();
-use Try::Tiny;
 
 sub user {
     getpwuid($>||$<);

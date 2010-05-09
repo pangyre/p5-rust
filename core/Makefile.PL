@@ -11,11 +11,11 @@ repository "git://github.com/pangyre/p5-rust";
 requires "Moose";
 requires "Test::Class";
 requires "Moose::Role";
-requires "Try::Tiny";
+# requires "Try::Tiny";
 
 if ( $Module::Install::AUTHOR )
 {
-    system("pod2text lib/Testy.pm > README") == 0
+    system("pod2text lib/Rust.pm > README") == 0
         or die "Couldn't update the README file";
 }
 

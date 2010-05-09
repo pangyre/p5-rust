@@ -63,7 +63,7 @@ __END__
 
 =head1 NAME
 
-Testy::Role::MechCat - L<Moose::Role> providing a L<Test::WWW::Mechanize::Catalyst> via the method C<mech>.
+Rust::Role::MechCat - L<Moose::Role> providing a L<Test::WWW::Mechanize::Catalyst> via the method C<mech>.
 
 =head1 SYNOPSIS
 
@@ -89,6 +89,6 @@ New methods are injected into the L<Test::WWW::Mechanize> space-
 
 =head1 Copyright and License
 
-See L<Testy>.
+See L<Rust>.
 
 =cut
