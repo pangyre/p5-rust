@@ -3,31 +3,28 @@ use Moose ();
 use Moose::Exporter;
 
 Moose::Exporter->setup_import_methods(
-    with_meta => [],
+    # with_meta => [],
     also      => 'Moose',
-    );
-
+   );
 
 sub init_meta {
     shift;
     return Moose->init_meta( @_,
-                             metaclass => 'MyApp::Meta::Class',
+                             metaclass => 'Moose::Meta::Class',
                              #for_class  => "Rust",
-                             # metaclass  => 'MooseX::Embiggen::Meta::Class',
                              base_class => "Test::Class",
         );
-
 }
+
+1;
+
+__END__
+
 
 package MyApp::Meta::Class;
 use Moose;
 
 extends qw( Moose::Meta::Class Test::Class );
-
-
-1;
-
-__END__
 
 package Rust;
 use Moose;

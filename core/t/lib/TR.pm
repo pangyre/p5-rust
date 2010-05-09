@@ -1,5 +1,4 @@
 package TR; # TestRust
-#use parent "Rust";
 use Rust;
 #with qw( Rust::Role::MechCat );
 use Test::More;
