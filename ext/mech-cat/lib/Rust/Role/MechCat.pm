@@ -1,6 +1,11 @@
 package Rust::Role::MechCat;
 use Moose::Role;
-requires qw( catalyst_app );
+# requires qw( catalyst_app );
+
+has "catalyst_app" =>
+    isa => "Str",
+    is => "rw",
+    ;
 
 has "mech" =>
     isa => "Test::WWW::Mechanize::Catalyst",
