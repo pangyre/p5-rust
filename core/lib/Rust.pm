@@ -1,15 +1,92 @@
 package Rust;
-use parent qw( Test::Class );
-use Moose;
-with qw( Rust::Base Rust::Util );
+use Moose ();
 use Moose::Exporter;
-Moose::Exporter->setup_import_methods( also => 'Moose' );
 
-__PACKAGE__->meta->make_immutable( inline_constructor => 0 );
+Moose::Exporter->setup_import_methods(
+    with_meta => [],
+    also      => 'Moose',
+    );
+
+
+sub init_meta {
+    shift;
+    return Moose->init_meta( @_,
+                             metaclass => 'MyApp::Meta::Class',
+                             #for_class  => "Rust",
+                             # metaclass  => 'MooseX::Embiggen::Meta::Class',
+                             base_class => "Test::Class",
+        );
+
+}
+
+package MyApp::Meta::Class;
+use Moose;
+
+extends qw( Moose::Meta::Class Test::Class );
+
+
+1;
+
+__END__
+
+package Rust;
+use Moose;
+use Moose::Exporter;
+#use namespace::autoclean;
+
+extends qw( Test::Class Moose::Object );
+use Test::More ();
+
+#*ok = \&Test::More::ok;
+#@Rust::EXPORT = qw( ok );
+
+
+use Moose::Exporter;
+#Moose::Exporter->setup_import_methods(
+#    with_meta => [ "with" ],
+#    as_is     => [ "with" ],
+#    also      => 'Moose',
+#    );
+
+#print "OK ", ok(1), $/;
+
+1;
+
+__END__
+
+
+
+Moose->init_meta(for_class => __PACKAGE__,
+                 base_class => "Test::Class",
+                 metaclass => "Rust::Meta::Class");
+
+BEGIN {
+    package Rust::Meta::Class;
+    use Moose;
+    extends "Moose::Meta::Class";
+
+}
+
+
+ @Rust::EXPORT = qw( ok isa_ok );
+
+ *isa_ok = \&Test::More::isa_ok;
+
+#use Moose::Exporter;
+#Moose::Exporter->setup_import_methods( also => "Moose" );
+
+
+ __PACKAGE__->meta->make_immutable( inline_constructor => 0 );
 
 1;
 
 __DATA__
+
+use Sub::Exporter -setup => {
+    exports => [
+        isa_ok => \&Test::More::isa_ok,
+        ],
+};
 
 =pod
 
@@ -66,3 +143,22 @@ such holder or other party has been advised of the possibility of
 such damages.
 
 =cut
+
+use MooseX::StrictConstructor;
+
+sub new {
+    my $class = shift;
+    my $obj = $class->SUPER::new(@_);
+
+      return $class->meta->new_object(
+          __INSTANCE__ => $obj,
+          @_,
+          );
+}
+# extends qw( Test::Class  );
+#with qw( Rust::Base Rust::Util );
+# use Test::More;
+
+#BEGIN { extends qw( Test::Class ) }
+# BEGIN { use Test::Class }
+# BEGIN { extends qw( Test::Class Exporter ) };

@@ -1,5 +1,7 @@
 package TR; # TestRust
-use parent "Rust";
+#use parent "Rust";
+use Rust;
+#with qw( Rust::Role::MechCat );
 use Test::More;
 
 sub oh_noes : Test(1) {

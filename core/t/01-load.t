@@ -1,13 +1,14 @@
 #!/usr/bin/env perl
 use warnings;
 use strict;
-use Test::More tests => 1;
+use Test::More;
 
 BEGIN {
-    use_ok('Testy');
+    use_ok('Rust');
 }
 
 
+done_testing();
 
 __END__
 
