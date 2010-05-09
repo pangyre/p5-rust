@@ -10,10 +10,12 @@ has "an_okay_attribute" =>
 
 sub catalyst_app { "" }
 
-sub oh_noes : Test(1) {
+sub oh_noes : Test(2) {
     my $self = shift;
     $self->an_okay_attribute("OH HAI");
     ok($self->an_okay_attribute, "Ok here");
+    is($self->an_okay_attribute, "OH HAI",
+       "Attributes and is() working");
 }
 
 1;
