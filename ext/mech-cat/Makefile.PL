@@ -1,8 +1,9 @@
 #!/usr/bin/env perl
 use inc::Module::Install;
 
-name "Rust::Role::MechCat";
+name "Rust-Role-MechCat";
 all_from "lib/Rust/Role/MechCat.pm";
+license "artistic_2";
 repository "git://github.com/pangyre/p5-rust";
 
 requires "Rust";

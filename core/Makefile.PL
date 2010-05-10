@@ -5,13 +5,13 @@ name "Rust";
 all_from "lib/Rust.pm";
 repository "git://github.com/pangyre/p5-rust";
 
-#build_requires "Pod::Spell";
-#build_requires "Test::Spelling";
-
 requires "Moose";
 requires "Test::Class";
 requires "Moose::Role";
-# requires "Try::Tiny";
+
+#build_requires "Pod::Spell";
+#build_requires "Test::Spelling";
+# Do a Task::Rust to include ALL the testing stuff and roles?
 
 if ( $Module::Install::AUTHOR )
 {

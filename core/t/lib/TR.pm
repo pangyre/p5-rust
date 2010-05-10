@@ -1,7 +1,6 @@
 package TR; # TestRust
 use Rust;
 with qw( Rust::Role::MechCat );
-# use Test::More;
 
 has "an_okay_attribute" =>
     is => "rw",

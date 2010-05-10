@@ -2,6 +2,7 @@ package Rust;
 use Moose ();
 use Test::More;
 use Moose::Exporter;
+our $VERSION = "0.01";
 
 Moose::Exporter->setup_import_methods(
     as_is => [qw(
@@ -123,7 +124,7 @@ Ashley Pond V E<middot> ashley.pond.v@gmail.com E<middot> L<http://pangyresoft.c
 
 =head1 License
 
-You may redistribute and modify this package under the same terms as Perl itself.
+Artistic 2.
 
 =head1 Disclaimer of Warranty
 

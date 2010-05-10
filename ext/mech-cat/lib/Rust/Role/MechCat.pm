@@ -36,7 +36,8 @@ has "mech" =>
                    )],
     ;
 
-# This SHOULD BE an auxiliary method for Test::WWW::Mechanize. Send patch to Andy.
+# These SHOULD BE an auxiliary method for Test::WWW::Mechanize. Send patch to Andy.
+# diff -urN Test-WWW-Mechanize-1.28/Mechanize.pm TWM/Mechanize.pm
 {
     package Test::WWW::Mechanize;
     use warnings;
@@ -46,15 +47,15 @@ has "mech" =>
         my ( $self, $target, $desc ) = @_;
         local $Test::Builder::Level = $Test::Builder::Level + 1;
         if ( ref($target) eq 'REGEX' ) {
-            diag('content_contains takes a string, not a regex');
+            diag('text_contains takes a string, not a regex');
         }
-        $desc = qq{Content contains "$target"} unless defined $desc;
+        $desc = qq{Text contains "$target"} unless defined $desc;
         contains_string( $self->content(format => "text"), $target, $desc );
     }
 
     sub text_like {
         my ( $self, $regex, $desc ) = @_;
-        $desc = qq{Content is like "$regex"} unless defined $desc;
+        $desc = qq{Text is like "$regex"} unless defined $desc;
         local $Test::Builder::Level = $Test::Builder::Level + 1;
         like_string( $self->content(format => "text"), $regex, $desc );
     }
